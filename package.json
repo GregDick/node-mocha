@@ -1,0 +1,23 @@
+{
+  "name": "node-mocha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GregDick/node-mocha.git"
+  },
+  "author": "Greg Dick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GregDick/node-mocha/issues"
+  },
+  "homepage": "https://github.com/GregDick/node-mocha#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}
