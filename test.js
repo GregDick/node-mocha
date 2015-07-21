@@ -1,5 +1,6 @@
 var should = require("chai").should();
 var Animal = require(process.cwd() + '/lib/Animal');
+var cp = require('child_process');
 
 describe('Mocha + Chai', function() {
   it('Truthyness', function(){
@@ -7,6 +8,18 @@ describe('Mocha + Chai', function() {
   });
 });
 
+describe.only('CLI', function(){
+  it('should thank me for downloading', function (done) {
+    cp.execFile('./app.js', function(err, stdout) {
+      console.log('err', err);
+      console.log('stdout', stdout);
+      stdout.should.equal('Thanks for downloading my app!!!');
+      done();
+    })
+    //execute app.js
+    //check the output 'Thanks for downloading my app!!!'
+  })
+})
 
 describe('Animal', function(){
   describe('constructor', function(){
@@ -23,6 +36,11 @@ describe('Animal', function(){
       animal.isAlive.should.be.true;
     })
 
+    it('should have 100% health', function(){
+      var animal = new Animal();
+      animal.health.should.equal(1);
+    })
+
     it('should accept a type function', function(){
       var cat = new Animal('cat');
       var dog = new Animal('dog');
@@ -30,7 +48,16 @@ describe('Animal', function(){
       cat.type.should.equal('cat');
       dog.type.should.equal('dog');
     })
+  })
+})
 
+describe('#updateHealthStats()', function(){
+  it('should change the health', function(done){
+    var animal = new Animal;
+    animal.updateHealthStats(function(){
+      animal.health.should.not.equal(1);
+      done();
+    });
   })
 })
 
