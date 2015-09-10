@@ -2,6 +2,13 @@ var should = require("chai").should();
 var Animal = require(process.cwd() + '/lib/Animal');
 var cp = require('child_process');
 
+describe('Thanks', function(){
+  var thanks = require(process.cwd() + '/lib/thanks');
+  it('should thank me for downloading', function(){
+    thanks.should.equal('Thanks for downloading my app!');
+  })
+})
+
 describe('Mocha + Chai', function() {
   it('Truthyness', function(){
     true.should.equal(true);
